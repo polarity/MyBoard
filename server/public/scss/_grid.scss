@@ -1,0 +1,47 @@
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+#BORDER-BOX {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+/******************************************************
+ * introduce a new row
+ ******************************************************/
+#ROW {
+	@include clearfix;
+	clear: both;
+
+}
+
+/******************************************************
+ * submit number of columns you want to span the div
+ * and the number of all columns to fill the page
+ * 6, 12 = 50% on each div
+ * 3, 12 = 40% on each div
+ ******************************************************/
+@mixin col($num, $cols) {
+	// border box
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+
+	float: left;
+	width: (100% / $cols) * $num - 0.000001%;
+}
+
+/******************************************************
+ * after the Layout comes the container. put your
+ * modules in there
+ ******************************************************/
+#CONTAINER {
+	@extend #BORDER-BOX;
+	@include clearfix;
+	overflow: hidden;
+	width: 100%;
+}

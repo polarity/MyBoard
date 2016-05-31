@@ -1,0 +1,175 @@
+$FontAwesomePath: "../fonts";
+
+// font awesome! AWESOME!
+@import "font_awesome/font-awesome.scss";
+
+
+// normalize all the elements!
+@import "fonts";
+@import "reset";
+@import "mixins";
+@import "style-guide";
+@import "grid";
+
+/******************************************************
+ * basic styles
+ ******************************************************/
+body {
+	@extend #ROW;
+	@extend #FONT-TAHOMA;
+	@extend #FONTSIZE-SMALL;
+	@extend #COLOR-BLACK;
+	@include clearfix;
+	background-image: url(../img/pn-bg.gif);
+	min-height: 100%;
+	min-width: 820px;
+	width: 100%;
+}
+h1 {
+	@extend #FONTSIZE-MED;
+	@extend #MARGIN-BOTTOM;
+}
+p {
+	@extend #MARGIN-BOTTOM;
+}
+a, a:link, a:visited {
+	@extend #COLOR-BLACK;
+}
+
+/**/
+.SiteWrapper {
+	@extend #CONTAINER;
+	@extend #CENTER-H;
+	@extend #BG-GREEN;
+	width: 760px;
+}
+
+/**/
+.SiteHeader {
+	min-height: 62px;
+	background-image: url(../img/pn-titel.gif);
+}
+
+/**/
+.MainMenu {
+	@extend #CONTAINER;
+	@extend #BG-WHITE;
+	@extend #PADDING-H-SMALL;
+	@extend #PADDING-V-SMALL;
+	li {
+		@extend #PADDING-H-SMALL;
+		float: left;
+	}
+}
+
+/**/
+.Threads {
+	@extend #CONTAINER;
+	@extend #PADDING-H-SMALL;
+	@include col(12,12);
+	.item {
+		@include col(12,12);
+		@extend #MARGIN-BOTTOM-TINY;
+		@extend #PADDING-H-SMALL;
+		@extend #PADDING-V-SMALL;
+		@extend #BG-LIGHTGREEN;
+	}
+	.symbol, .time, .user, .title {
+		float:left;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.user, .title {
+		@extend #MARGIN-RIGHT-SMALL;
+	} 
+	.symbol {
+		@include col(1,24);
+		text-indent: -999999px;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-image: url(../img/pn-folder.gif);
+	}
+	.title {
+		@include col(11,24);
+	}
+	.user {
+		@include col(5,24);
+	}
+	.time {
+		@include col(6,24);
+	}
+}
+
+/**/
+.Thread {
+	@extend #PADDING-V-SMALL;
+	@extend #PADDING-H-SMALL;
+	padding-bottom: 0px;
+	.content {
+		@extend #BG-LIGHTGREEN;
+		@extend #PADDING-V;
+		@extend #PADDING-H;
+	}
+	h1 {
+		@extend #FONTSIZE-MED;
+		@extend #MARGIN-BOTTOM;
+	}
+}
+
+/**/
+.Comments {
+	@extend #PADDING-H-SMALL;
+	@extend #PADDING-V-SMALL;
+	padding-bottom: 0px;
+	.Comment {
+		@extend #BG-LIGHTGREEN;
+		@extend #PADDING-V;
+		@extend #PADDING-H;
+	}
+}
+
+/**/
+.TextBox {
+	@extend #PADDING-V-SMALL;
+	@extend #PADDING-H-SMALL;
+	.content {
+		@extend #BG-LIGHTGREEN;
+		@extend #PADDING-V;
+		@extend #PADDING-H;
+	}
+}
+/**/
+.Form {
+	@extend #PADDING-V-SMALL;
+	@extend #PADDING-H-SMALL;
+	form {
+		@extend #BG-LIGHTGREEN;
+		@extend #PADDING-V;
+		@extend #PADDING-H;
+	}
+}
+.form_input {
+	@extend #CONTAINER;
+	@extend #MARGIN-BOTTOM-TINY;
+	@include col(12,12);
+	label {
+		@include col(3,12);
+		@extend #PADDING-H-SMALL;
+		@extend #PADDING-V-SMALL;
+		@extend #TEXT-RIGHT;
+	}
+	input, textarea {
+		@extend #PADDING-H-SMALL;
+		@extend #PADDING-V-SMALL;
+		@include col(9,12);
+	}
+	textarea {
+		height: $space*6;
+	}
+
+}	
+.button_bar {
+	@extend #TEXT-RIGHT;
+	@extend #CONTAINER;
+	@extend #MARGIN-BOTTOM-TINY;
+}

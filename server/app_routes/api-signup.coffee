@@ -32,11 +32,11 @@ module.exports = (app, pdb, pdb_users, auth, PouchDB)->
 
 			# setup e-mail data with unicode symbols
 			mailOptions = {
-				from: 'epago Signup <info@epago.de>', #sender address
+				from: 'Producer Network Signup <info@producer-network.de>', #sender address
 				to: req.body.email, # list of receivers
-				subject: 'Deine epago Registrierung ✔', # Subject line
+				subject: 'Deine PN Registrierung ✔', # Subject line
 				text: 'Hello world ✔', # plaintext body
-				html: '<p>Willkommen bei epago. Bitte klicken Sie diesen Link damit wir wissen wer sie sind:</p>\
+				html: '<p>Willkommen im PN. Bitte klicken Sie diesen Link damit wir wissen wer sie sind:</p>\
 					<p><a href="'+link+'"">'+link+'</a></p>' # html body
 			}
 

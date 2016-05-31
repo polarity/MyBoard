@@ -1,0 +1,322 @@
+@import "mediaqueries";
+
+$color0: #fff; // white
+$color1: #454545; // black
+$color2: #E0E3D5; // LIGHTGREEN
+$color3: #D1D6C4; // green
+$color8: #d44367; // red
+
+// Space used as paddings on various elements
+$space: 20px;
+
+/* Colors */
+#COLOR-WHITE {
+	color: $color0;
+}
+#COLOR-BLACK {
+	color: $color1;
+}
+#COLOR-LIGHTGREEN {
+	color: $color2;
+}
+#COLOR-GREEN {
+	color: $color3;
+}
+#COLOR-RED {
+	color: $color8;
+}
+
+/* Backgrounds*/
+#BG-WHITE {
+	background-color: $color0;
+}
+#BG-LIGHTGREEN {
+	background-color: $color2;
+}
+#BG-GREEN {
+	background-color: $color3;
+}
+#BG-RED {
+	background-color: $color8;
+	background-image: none;
+	color: $color0;
+}
+/* 
+ * Fonts 
+ */
+#FONT-TAHOMA {
+	font-family: "Tahoma", "Helvetica", "Arial", "sans-serif";
+}
+#FONT-OPENSANS {
+	font-family: "Open Sans";
+}
+/* 
+ * Font Sizes 
+ */
+#FONTSIZE-BIG {
+	font-size: $space*3;
+	line-height: $space*3;
+}
+#FONTSIZE-MED {
+	font-size: $space*1.5;
+	line-height: $space*1.5;
+}
+#FONTSIZE-NORMAL {
+	font-size: $space;
+	line-height: $space;
+}
+#FONTSIZE-SMALL {
+	font-size: $space/1.3;
+	line-height: $space;
+}
+#FONTSIZE-TINY {
+	font-size: $space/1.5;
+	line-height: $space/1.3;
+}
+
+/* 
+ * Transformations 
+ */
+#UPPERCASE {
+	text-transform: uppercase;
+}
+
+/* 
+ * Margings 
+ */
+#MARGIN-NO {
+	margin: 0;
+}
+
+#MARGIN-BOTTOM {
+	margin-bottom: $space;
+}
+#MARGIN-BOTTOM-BIG {
+	margin-bottom: $space*2;
+}
+#MARGIN-BOTTOM-SMALL {
+	margin-bottom: $space/2;
+}
+#MARGIN-BOTTOM-TINY {
+	margin-bottom: $space/3;
+}
+#MARGIN-BOTTOM-NO {
+	margin-bottom: 0;
+}
+
+#MARGIN-RIGHT {
+	margin-right: $space;
+}
+#MARGIN-RIGHT-MEDIUM {
+	margin-right: $space/2;
+}
+#MARGIN-RIGHT-SMALL {
+	margin-right: $space/3;
+}
+#MARGIN-RIGHT-TINY {
+	margin-right: $space/4;
+}
+
+#MARGIN-LEFT {
+	margin-left: $space;
+}
+#MARGIN-LEFT-MEDIUM {
+	margin-left: $space/2;
+}
+#MARGIN-LEFT-SMALL {
+	margin-left: $space/3;
+}
+#MARGIN-LEFT-TINY {
+	margin-left: $space/4;
+}
+
+#PADDING-V-BIG {
+	padding-top: $space*2;
+	padding-bottom: $space*2;
+}
+#PADDING-V {
+	padding-top: $space;
+	padding-bottom: $space;
+}
+#PADDING-V-MED {
+	padding-top: $space/1.5;
+	padding-bottom: $space/1.5;
+}
+#PADDING-V-SMALL {
+	padding-top: $space/2;
+	padding-bottom: $space/2;
+}
+#PADDING-V-TINY {
+	padding-top: $space/3;
+	padding-bottom: $space/3;
+}
+#PADDING-V-NO {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+#PADDING-H-BIG {
+	padding-left: $space*2;
+	padding-right: $space*2;
+}
+#PADDING-H {
+	padding-left: $space;
+	padding-right: $space;
+}
+#PADDING-H-SMALL {
+	padding-left: $space/2;
+	padding-right: $space/2;
+}
+#PADDING-H-TINY {
+	padding-left: $space/3;
+	padding-right: $space/3;
+}
+#PADDING-H-NO {
+	padding-left: 0;
+	padding-right: 0;
+}
+/* 
+ * Borders 
+ */
+#BORDER-GREEN {
+	border-color: $color1;
+	border-style: solid;
+}
+/*
+ * Positioning
+ */
+#CENTER-H {
+	margin-left: auto;
+	margin-right: auto;
+}
+#PULL-RIGHT {
+	float: right;
+}
+#TEXT-RIGHT {
+	text-align: right;
+}
+#TEXT-LEFT {
+	text-align: left;
+}
+#TEXT-CENTER {
+	text-align: center;
+}
+
+/*
+ * Rounded Corners
+ */
+#ROUND-SMALL {
+	@include radius($space/2);
+}
+#ROUND-TINY {
+	@include radius($space/4);
+}
+#ROUND-TABS {
+	@include radius($space/4, $space/4, 0 , 0);
+}
+/*
+ * Forms
+ */
+#INPUT {
+	@extend #BORDER-BOX;
+	@extend #FONTSIZE-SMALL;
+	@extend #ROUND-TINY;
+	@extend #PADDING-V-SMALL;
+	@extend #PADDING-H;
+	@extend #MARGIN-NO;
+	border-width: 1px;
+	width: 100%;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	&:focus {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		outline: none;
+	}
+}
+#LABEL {
+	@extend #BORDER-BOX;
+	@extend #FONTSIZE-SMALL;
+	@extend #PADDING-V-SMALL;
+	@extend #PADDING-H;
+	@extend #MARGIN-NO;
+	width: 100%;
+	padding-left: 0;
+}
+#INPUT-ICON {
+	@extend #FONTSIZE-SMALL;
+	@extend #ROUND-TINY;
+	@extend #BG-GREEN;
+	padding: $space - 1;
+	position: absolute;
+	right: 2px;
+	top: 22px;
+	line-height:0;
+}
+#BUTTON {
+	@extend #ROUND-TINY;
+	@extend #NO-DECORATION;
+	@extend #NO-SELECT;
+	@extend #MARGIN-RIGHT;
+	@extend #TRANSITION-BG;
+	display: block;
+	font-weight: 300;
+	cursor: pointer;
+	display: block;
+	i.fa {
+		//@extend #MARGIN-RIGHT-TINY;
+	}
+	&:hover {
+		
+	}
+
+}
+/* Special */
+#NO-DECORATION {
+	text-decoration: none;
+}
+#NO-SELECT {
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.reset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.center_box {
+	margin-right: auto;
+	margin-left: auto;
+}
+#LOGO {
+	background-image: url(../img/epago-logo.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	text-indent: -9999px;
+	outline: none;
+	height: 79px;
+	display: block;
+}
+
+#MATCH_IMAGE {
+	max-width: 100%;
+}
+
+#CHECK_LIST_LI {
+	background: url(../svg/haken.svg);
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size: auto 30px;
+	margin-bottom: $space;
+	list-style-type: none;
+	padding-left: 50px;
+}
+#TRANSITION-BG {
+	-webkit-transition:background-color 0.3s linear;  
+	-moz-transition:background-color 0.3s linear;  
+	-o-transition:background-color 0.3s linear;  
+	transition:background-color 0.3s linear;  
+}

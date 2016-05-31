@@ -1,9 +1,12 @@
-html
-	head
-		title Login
-	body
-		form(action="/api/login", method="POST")
+extends includes/_layout
 
+block head
+	+global_headstuff({title:"Login ~ Producer-Network"})
+
+block body
+	.Form
+		form(action="/api/login", method="POST")
+			h2 Login
 			div.form_input
 				label Username
 				input(type="text", name="username")
@@ -12,7 +15,5 @@ html
 				label Passwort
 				input(type="password", name="password")
 
-			div.form_input
+			div.button_bar
 				input(type="submit")
-
-			p hallo welt

@@ -8,22 +8,32 @@ var PouchDB = require('pouchdb').defaults({
 var dotenv = require("dotenv");
 var favicon = require('serve-favicon');
 var expressPouchdb = require('express-pouchdb');
-var jadeStatic = require("connect-jade-static");
 var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpack = require("webpack");
 var sass = require("node-sass-middleware");
 var path = require('path');
 var bodyParser = require("body-parser");
 var jstat = require('json-status');
+var esession = require("express-session");
 
 // init express app
 var app = express();
 
+// serve sass files as static css files
+// domain.de/css/*.css -> public/src/scss/*.scss
+app.use(sass({
+	src: __dirname + '/public/scss',
+	dest: __dirname + '/public/css',
+	prefix: "/css",
+	debug: true
+}));
+
 // template engine
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/public/jade/');
-app.use('/img', express.static(__dirname + '/public/src/img'));
-app.use('/fonts', express.static(__dirname + '/public/src/fonts'));
+app.use('/img', express.static(__dirname + '/public/img'));
+app.use('/fonts', express.static(__dirname + '/public/fonts'));
+app.use('/css', express.static(__dirname + '/public/css'));
 
 // serve the favicon
 app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -38,9 +48,6 @@ var compiler = webpack({
 	},
 	module: {
 		loaders: [
-			{
-				test: /\.css$/, loader: "style!css"
-			},
 			{
 				test: /\.coffee$/, loader: "coffee-loader"
 			},
@@ -60,27 +67,6 @@ app.use(webpackDevMiddleware(compiler, {
 	publicPath: '/js'
 }));
 
-// serve sass files as static css files
-// domain.de/css/*.css -> public/src/scss/*.scss
-app.use(sass({
-	src: __dirname + '/public/src/scss',
-	dest: __dirname + '/public/dev/css',
-	prefix: "/css",
-	debug: true
-}));
-
-// serve jade files as static
-// html files
-// domain.de/index.html -> /public/src/content/index.jade
-app.use(jadeStatic({
-	baseDir: path.join(__dirname + "/public/src/jade/content"),
-	baseUrl: "/",
-	maxAge: 86400,
-	jade: {
-		pretty: true
-	}
-}));
-
 // init database
 var pdb = new PouchDB("db"); // database init
 var pdb_users = new PouchDB("_users"); // database init
@@ -94,6 +80,9 @@ dotenv.load({
 
 // express use stuff
 // app.use(express.logger('tiny'));
+app.use(esession({
+	secret: process.env.SESSION_SECRET
+}));
 app.use(auth.initialize());
 app.use(auth.session());
 app.use(bodyParser.urlencoded({
@@ -115,8 +104,28 @@ app.use(jstat.connectMiddleware({
 require("./app_routes/api-signup.coffee")(app, pdb, pdb_users, auth, PouchDB);
 require("./app_routes/api-login.coffee")(app, pdb, pdb_users, auth, PouchDB);
 require("./app_routes/api-confirm-email.coffee")(app, pdb, pdb_users, auth, PouchDB);
+require("./app_routes/api-post.js")(app, pdb, pdb_users, auth, PouchDB);
+
 require("./app_routes/signup.coffee")(app, pdb, pdb_users, auth, PouchDB);
 require("./app_routes/login.coffee")(app, pdb, pdb_users, auth, PouchDB);
+require("./app_routes/root.js")(app, pdb, pdb_users, auth, PouchDB);
+require("./app_routes/profile.coffee")(app, pdb, pdb_users, auth, PouchDB);
+
+require("./app_routes/latest.js")(app, pdb, pdb_users, auth, PouchDB);
+require("./app_routes/thread.js")(app, pdb, pdb_users, auth, PouchDB);
+
+
+// show all user data
+pdb.allDocs({
+	include_docs: true,
+	attachments: true
+})
+	.then(function(result) {
+		console.log(result);
+	})
+	.catch(function(err) {
+		console.log(result);
+	});
 
 // start the server
 console.log("Listening on " + process.env.APP_PORT);

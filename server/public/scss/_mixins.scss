@@ -1,0 +1,22 @@
+// define arrow
+@mixin arrow($color) {
+	&:after {
+		content: "";
+		display: block;
+		position: relative;
+		bottom: -15px;
+		z-index: 1;
+		height: 0;
+		width: 0;
+		margin: 0 auto;
+		border-bottom: 0px solid $color;
+		border-top: 20px solid $color;
+		border-left: 30px solid transparent;
+		border-right: 30px solid transparent;
+	}	
+}
+@mixin radius($topleft, $topright: $topleft, $bottomright: $topleft, $bottomleft: $topleft) {
+	-moz-border-radius: $topleft $topright $bottomright $bottomleft;
+	-webkit-border-radius: $topleft $topright $bottomright $bottomleft;
+	border-radius: $topleft $topright $bottomright $bottomleft;
+}

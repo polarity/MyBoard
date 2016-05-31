@@ -1,0 +1,28 @@
+include ../mixins/global_headstuff
+
+doctype html
+html(lang="de")
+
+	head
+		block head
+
+	body
+		div.SiteWrapper
+
+			div.SiteHeader
+
+			ul.MainMenu
+				li 
+					a(href="/") Home
+				li 
+					a(href="/login") Login
+					| &nbsp;|&nbsp;
+					a(href="/signup") Signup
+
+				li 
+					a(href="/profile") Mein Profil
+
+				li 
+					a(href="/latest") Neue Postings im Forum
+
+			block body

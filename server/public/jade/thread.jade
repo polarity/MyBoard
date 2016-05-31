@@ -1,0 +1,33 @@
+extends includes/_layout
+
+block head
+	+global_headstuff({title:thread.post_title+" ~ Producer-Network"})
+
+block body
+
+	div.Thread
+		.content
+			h1= thread.post_title
+			div= thread.post_text
+
+	if thread.comments
+		div.Comments
+			each comment in thread.comments
+				div.Comment
+					div.user= comment.user
+					div.time= comment.created
+					div.text= comment.post_text
+
+
+	.Form
+		form(action="/api/post", method="post")
+			h2 Kommentar verfassen!
+			input(type="hidden", name="id", value!=thread._id)
+
+			div.form_input
+				label Text
+				textarea(name="post_text")
+			div.button_bar
+				input(type="submit")
+
+

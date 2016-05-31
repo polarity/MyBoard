@@ -1,0 +1,37 @@
+extends includes/_layout
+
+block head
+	+global_headstuff({title:"Neue Postings ~ Producer-Network"})
+
+block body
+
+	.Form
+		form(action="/api/post", method="post")
+			h2 Neuer Thread!
+			input(type="hidden", name="first", value="true")
+			div.form_input
+				label Title
+				input(type="text", name="post_title")
+			div.form_input
+				label Text
+				textarea(name="post_text")
+			div.button_bar
+				input(type="submit")
+
+
+
+	div.Threads
+		each thread in threads
+
+			.item
+				div.symbol x
+				div.title
+					a(href!="thread/"+thread.doc._id)
+						span= thread.doc.post_title 
+					if thread.doc.comments
+						span= " ("+thread.doc.comments.length+")"
+				div.user von 
+					span= thread.doc.user 
+				div.time um 
+					span= thread.doc.created
+
