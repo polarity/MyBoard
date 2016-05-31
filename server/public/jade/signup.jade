@@ -1,0 +1,22 @@
+html
+	head
+		title SignUp
+	body
+		form(action="/api/signup", method="POST")
+
+			div.form_input
+				label Username
+				input(type="text", name="username")
+
+			div.form_input
+				label E-Mail
+				input(type="text", name="email")
+
+			div.form_input
+				label Passwort
+				input(type="password", name="password")
+
+			div.form_input
+				input(type="submit")
+
+			p hallo welt

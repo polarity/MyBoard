@@ -1,0 +1,40 @@
+{
+  "name": "ss-myboard",
+  "version": "0.0.1",
+  "description": "small bulletin board for nerds",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bboard",
+    "board",
+    "forum"
+  ],
+  "author": "Robert Agthe",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.10.0",
+    "connect-jade-static": "^0.2.2",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "express-pouchdb": "^1.0.3",
+    "json-status": "^0.5.3",
+    "jwt-simple": "^0.5.0",
+    "md5": "^2.1.0",
+    "node-sass-middleware": "^0.9.8",
+    "nodemailer": "^2.4.2",
+    "nodemailer-smtp-transport": "^2.5.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-token": "^0.1.3",
+    "pouchdb": "^5.3.2",
+    "serve-favicon": "^2.3.0",
+    "validator": "^5.3.0",
+    "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.6.1"
+  }
+}
