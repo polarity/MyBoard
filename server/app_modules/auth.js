@@ -20,6 +20,7 @@ module.exports = function(pdb_users) {
 		pdb_users.get(id).then(function(user) {
 			return done(null, user);
 		}).catch(function(err) {
+			console.log("Login fail: ", err);
 			return done(err, null);
 		});
 	});
