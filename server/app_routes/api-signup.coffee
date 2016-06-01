@@ -70,7 +70,7 @@ module.exports = (app, pdb, pdb_users, auth, PouchDB)->
 								res.json(response)
 							.catch (err)->
 								res.status.internalServerError([{err:"couldnt save new user"}])
-				.catch ()->
-					res.status.internalServerError([{err:"some db problem on signup"}])
+				.catch (err)->
+					res.status.internalServerError([{err:"some db problem on signup", details: err}])
 		else
 			res.status.notAcceptable(error)
