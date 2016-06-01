@@ -2,7 +2,7 @@ jwt = require('jwt-simple')
 
 module.exports = (app, pdb, pdb_users, auth)->
 	# login!
-	app.post '/api/login',auth.authenticate('local',{successRedirect: '/'}),(req, res) ->
+	app.post '/api/login',auth.authenticate('local',{}),(req, res) ->
 		# send token back!
 		res.json({
 			username: req.user.username,
