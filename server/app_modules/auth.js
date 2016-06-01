@@ -20,7 +20,6 @@ module.exports = function(pdb_users) {
 		pdb_users.get(id).then(function(user) {
 			return done(null, user);
 		}).catch(function(err) {
-			console.log("Login fail: ", err);
 			return done(err, null);
 		});
 	});
@@ -28,6 +27,7 @@ module.exports = function(pdb_users) {
 	// define the app auth strategy
 	var localStrategy = new LocalStrategy(function(username, password, done) {
 		return pdb_users.get("org.couchdb.user:" + username).then(function(user) {
+			console.log(user);
 			if (user.password === md5(password)) {
 				return done(null, user);
 			} else {
