@@ -27,7 +27,6 @@ module.exports = function(pdb_users) {
 	// define the app auth strategy
 	var localStrategy = new LocalStrategy(function(username, password, done) {
 		return pdb_users.get("org.couchdb.user:" + username).then(function(user) {
-			console.log(user, password, md5(password), user.password);
 			if (user.password === md5(password)) {
 				return done(null, user);
 			} else {
