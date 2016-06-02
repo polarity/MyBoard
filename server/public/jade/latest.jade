@@ -31,7 +31,7 @@ block body
 					if thread.doc.comments
 						span= " ("+thread.doc.comments.length+")"
 				div.user von 
-					span= thread.doc.user 
+					span= thread.doc.user.username
 				div.time um 
-					span= thread.doc.created
+					span= moment(thread.doc.created).fromNow()
 

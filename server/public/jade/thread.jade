@@ -16,8 +16,13 @@ block body
 		div.Comments
 			each comment in thread.comments
 				div.Comment
-					div.user= comment.user
-					div.time= comment.created
+					- var gav = "https://www.gravatar.com/avatar/"
+					- var av = md5(comment.user.email)
+					div.user
+						div.avatar
+							img(src=gav+av, width="50", height="50")
+						div.username= comment.user.username
+					div.time= moment(comment.created).fromNow()
 					- var comment_parsed = m_reader.parse(comment.post_text);
 					- var comment_result = m_writer.render(comment_parsed);
 					div.text!= comment_result

@@ -1,3 +1,5 @@
+moment = require("moment");
+
 module.exports = function(app, pdb, pdb_users, auth, PouchDB) {
 
 	// Root !
@@ -15,6 +17,7 @@ module.exports = function(app, pdb, pdb_users, auth, PouchDB) {
 		// query db
 		pdb.query(map, options).then(function(response) {
 			res.render("latest", {
+				moment: moment,
 				threads: response.rows
 			});
 		});

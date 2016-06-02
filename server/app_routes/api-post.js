@@ -19,7 +19,7 @@ module.exports = function(app, pdb, pdb_users, auth, PouchDB) {
 			var comment = {
 				forId: req.body.id,
 				created: created,
-				user: req.user.username,
+				user: req.user,
 				post_text: text,
 			};
 
@@ -41,7 +41,7 @@ module.exports = function(app, pdb, pdb_users, auth, PouchDB) {
 			var threadDoc = {
 				_id: id,
 				created: created,
-				user: req.user.username,
+				user: req.user,
 				firstPost: first,
 				post_title: title,
 				post_text: text,

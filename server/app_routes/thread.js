@@ -1,4 +1,6 @@
 commonmark = require("commonmark");
+md5 = require("md5");
+moment = require("moment");
 
 module.exports = function(app, pdb, pdb_users, auth, PouchDB) {
 
@@ -18,6 +20,8 @@ module.exports = function(app, pdb, pdb_users, auth, PouchDB) {
 			res.render("thread", {
 				m_reader: reader,
 				m_writer: writer,
+				md5: md5,
+				moment: moment,
 				thread: response
 			});
 		});

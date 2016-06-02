@@ -131,9 +131,18 @@ a, a:link, a:visited {
 	@extend #PADDING-V-SMALL;
 	padding-bottom: 0px;
 	.Comment {
+		@extend #CONTAINER;
 		@extend #BG-LIGHTGREEN;
 		@extend #PADDING-V;
 		@extend #PADDING-H;
+	}
+	.user {
+		@include col(1,12);
+		@extend #TEXT-CENTER;
+		@extend #MARGIN-RIGHT;
+	}
+	.time {
+		opacity: 0.4;
 	}
 }
 
