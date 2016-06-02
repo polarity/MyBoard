@@ -28,7 +28,8 @@ module.exports = function(app, pdb, pdb_users, auth, PouchDB) {
 				doc.comments.push(comment);
 				// write to db
 				pdb.put(doc).then(function(response) {
-					res.json(response);
+					//res.json(response);
+					res.redirect("/thread/" + req.body.id);
 				});
 			});
 
@@ -48,7 +49,9 @@ module.exports = function(app, pdb, pdb_users, auth, PouchDB) {
 			};
 			// write to db
 			pdb.put(threadDoc).then(function(response) {
-				res.json(response);
+				//res.json(response);
+				res.redirect("/thread/" + id);
+
 			});
 		}
 	});

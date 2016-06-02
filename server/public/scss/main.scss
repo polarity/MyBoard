@@ -36,6 +36,15 @@ a, a:link, a:visited {
 	@extend #COLOR-BLACK;
 }
 
+.Warning {
+	@extend #PADDING-V;
+	p {
+		@extend #BG-RED;
+		@extend #PADDING-H-SMALL;
+		@extend #PADDING-V-SMALL;
+		margin-bottom: 0;
+	}
+}
 /**/
 .SiteWrapper {
 	@extend #CONTAINER;

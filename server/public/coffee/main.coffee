@@ -7,6 +7,7 @@ $("#LoginForm").on "submit", (ev)->
 
 	username = el.find("[name='username']").val()
 	password = el.find("[name='password']").val()
+	warningEl = el.find(".Warning")
 
 	$.ajax("/api/login", {
 		"type": "POST"
@@ -16,7 +17,10 @@ $("#LoginForm").on "submit", (ev)->
 		}
 	})
 	.done (data, textStatus, jqXHR)->
-		console.log(data)
+		console.log(data.token)
+		# redirect on success
+		window.location = "/latest" if data.token
 
 	.fail (jqXHR, textStatus, errorThrown)->
-		console.log(textStatus)
+		warningEl.children("p").text(errorThrown)
+		warningEl.show("slow")
