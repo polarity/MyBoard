@@ -67,7 +67,8 @@ module.exports = (app, pdb, pdb_users, auth, PouchDB)->
 							.then (response)->
 								epSendMail(mailOptions)
 								# doc saved?
-								res.json(response)
+								# res.json(response)
+								res.redirect("/login")
 							.catch (err)->
 								res.status.internalServerError([{err:"couldnt save new user"}])
 				.catch (err)->
