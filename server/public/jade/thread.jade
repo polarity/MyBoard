@@ -8,7 +8,9 @@ block body
 	div.Thread
 		.content
 			h1= thread.post_title
-			div= thread.post_text
+			- var parsed = m_reader.parse(thread.post_text);
+			- var result = m_writer.render(parsed);
+			div.text!= result
 
 	if thread.comments
 		div.Comments
@@ -16,7 +18,9 @@ block body
 				div.Comment
 					div.user= comment.user
 					div.time= comment.created
-					div.text= comment.post_text
+					- var comment_parsed = m_reader.parse(comment.post_text);
+					- var comment_result = m_writer.render(comment_parsed);
+					div.text!= comment_result
 
 
 	.Form
